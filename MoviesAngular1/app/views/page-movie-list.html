@@ -1,0 +1,23 @@
+﻿<div id="movie-list">
+
+    <div>
+        <input type="text" name="search" placeholder="Search.." class="search-box">
+    </div>
+
+    <table class="table table-hover">
+        <tbody>
+            <tr ng-repeat="movie in movieList">
+                <td ng-click="goToDetail(movie.id)">
+                    <div>
+                        <P class="movie-list-title">{{movie.title}}</P>
+                        <p class="movie-list-description">{{movie.releaseYear}} - {{movie.category}} - {{movie.runningTime}}</p>
+                    </div>
+                </td>
+                <td>
+                    <a href="#/{{movie.id}}" class="detail-button" >Detail</a>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>

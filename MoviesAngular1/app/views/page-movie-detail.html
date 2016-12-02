@@ -1,0 +1,60 @@
+﻿<div id="movie-detail">
+    <div id="movie-detail-title">
+        <a href="" ng-click="backToList()" class="back-button movie-detail-nav">Back</a>
+        <h2 class="movie-detail-title">{{movieDetail.title}}</h2>
+        <br style="clear: both;" />
+    </div>
+    <div>
+        <div class="container">
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">Release Year:</div>
+                        <div class="col-md-6">{{movieDetail.releaseYear}}</div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">Category:</div>
+                        <div class="col-md-6">{{movieDetail.category}}</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">Classification:</div>
+                        <div class="col-md-6">{{movieDetail.classification}}</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">Format:</div>
+                        <div class="col-md-6">{{movieDetail.format}}</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">Running Time:</div>
+                        <div class="col-md-6">{{movieDetail.runningTime}}</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">TV Recording?</div>
+                        <div class="col-md-6">{{movieDetail.tvRecording | yesNo}}</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">Date Added:</div>
+                        <div class="col-md-6">{{movieDetail.dateAdded | date:"dd/MM/yyyy"}}</div>
+                    </div>
+                </div>
+                    
+            <div class="col-md-6">
+                <div class="col-md-6">Description:</div>
+                <div class="col-md-6">{{movieDetail.description}}</div>
+            </div>
+        </div>
+            
+            
+        </div>
+    </div>
+
+
+</div>
