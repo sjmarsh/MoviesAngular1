@@ -7,6 +7,10 @@
     return $http.get(baseUrl);
   };
 
+  this.getMoviesByTitle = function (title) {
+    return $http.get(baseUrl + '?searchFilter=' + title)
+  };
+
   this.getMovie = function (movieId) {
     return $http.get(baseUrl + '/' + movieId);
   };
