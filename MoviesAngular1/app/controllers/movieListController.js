@@ -1,4 +1,4 @@
-﻿app.controller('movieListController', ['$scope', '$location', 'movieService', function ($scope, $location, movieService) {
+﻿app.controller('movieListController', ['$scope', '$location', 'toastr' , 'movieService', function ($scope, $location, toastr, movieService) {
 
   $scope.pageClass = 'page-movie-list';
 
@@ -31,7 +31,13 @@
         $scope.movieList = movies;
       })
       .error(function (error) {
-        $scope.statusMessage = 'Error loading movies. Error: ' + error.message;
+        var message = 'Error loading movies.';
+        if (error) {
+          toastr.error(message + ' Error: ' + error.message);
+        }
+        else {
+          toastr.error(message);
+        }
       })
   };
 
@@ -42,7 +48,13 @@
         $scope.movieList = movies;
       })
       .error(function (error) {
-        $scope.statusMessage = 'Error loading movies. Error: ' + error.message;
+        var message = 'Error loading movies.';
+        if (error) {
+          toastr.error(message + ' Error: ' + error.message);
+        }
+        else {
+          toastr.error(message);
+        }
       })
     }
   };

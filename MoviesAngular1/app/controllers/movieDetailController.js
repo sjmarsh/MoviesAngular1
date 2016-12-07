@@ -1,4 +1,4 @@
-﻿app.controller('movieDetailController', ['$scope', '$location', '$routeParams', 'movieService', function ($scope, $location, $routeParams,  movieService) {
+﻿app.controller('movieDetailController', ['$scope', '$location', '$routeParams', 'toastr', 'movieService', function ($scope, $location, $routeParams, toastr, movieService) {
 
   $scope.pageClass = 'page-movie-detail';
 
@@ -17,7 +17,13 @@
       $scope.movieDetail = movie;
     })
     .error(function (error) {
-      $scope.status = 'Error retrieving movie details. Error Message: ' + error.message;
+      var message = 'Error retrieving movie details.';
+      if (error) {
+        toastr.error(message + ' Error Message: ' + error.message);
+      }
+      else {
+        toastr.error(message);
+      }
     });
   };
 
