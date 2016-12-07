@@ -57,7 +57,6 @@
     text-indent: -99999px;
 }
 
-
 .movie-detail-nav {
     float:left;
     margin: 20px 15px 10px 5px;
@@ -65,4 +64,23 @@
 
 .movie-detail-title {
     float:left;
+}
+
+.movie-detail-detail {
+    margin: 20px 10px 20px 10px;
+    padding: 5px 5px 200px 5px;
+    font-size: large;
+    font-family: 'Segoe UI', Arial;
+}
+
+.bg-img{
+   
+   background: linear-gradient(165deg, white, white 50%, transparent), url('../img/film.jpg'), no-repeat;
+   background-size: cover;
+   left: 0;
+   top: 0;
+   
+   max-width:100%;
+   max-height:100%;
+   opacity: 0.6;
 }

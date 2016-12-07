@@ -4,57 +4,56 @@
         <h2 class="movie-detail-title">{{movieDetail.title}}</h2>
         <br style="clear: both;" />
     </div>
-    <div>
+    <div class="movie-detail-detail bg-img">
         <div class="container">
             
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-sm-6">
                     <div class="row">
-                        <div class="col-md-6">Release Year:</div>
-                        <div class="col-md-6">{{movieDetail.releaseYear}}</div>
+                        <div class="col-xs-6">Release Year:</div>
+                        <div class="col-xs-6">{{movieDetail.releaseYear}}</div>
 
                     </div>
 
                     <div class="row">
-                        <div class="col-md-6">Category:</div>
-                        <div class="col-md-6">{{movieDetail.category}}</div>
+                        <div class="col-xs-6">Category:</div>
+                        <div class="col-xs-6">{{movieDetail.category}}</div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-6">Classification:</div>
-                        <div class="col-md-6">{{movieDetail.classification}}</div>
+                        <div class="col-xs-6">Classification:</div>
+                        <div class="col-xs-6">{{movieDetail.classification}}</div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-6">Format:</div>
-                        <div class="col-md-6">{{movieDetail.format}}</div>
+                        <div class="col-xs-6">Format:</div>
+                        <div class="col-xs-6">{{movieDetail.format}}</div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-6">Running Time:</div>
-                        <div class="col-md-6">{{movieDetail.runningTime}}</div>
+                        <div class="col-xs-6">Running Time:</div>
+                        <div class="col-xs-6">{{movieDetail.runningTime}}</div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-6">TV Recording?</div>
-                        <div class="col-md-6">{{movieDetail.tvRecording | yesNo}}</div>
+                        <div class="col-xs-6">TV Recording?</div>
+                        <div class="col-xs-6">{{movieDetail.tvRecording | yesNo}}</div>
                     </div>
 
                     <div class="row">
-                        <div class="col-md-6">Date Added:</div>
-                        <div class="col-md-6">{{movieDetail.dateAdded | date:"dd/MM/yyyy"}}</div>
+                        <div class="col-xs-6">Date Added:</div>
+                        <div class="col-xs-6">{{movieDetail.dateAdded | date:"dd/MM/yyyy"}}</div>
                     </div>
                 </div>
                     
-            <div class="col-md-6">
-                <div class="col-md-6">Description:</div>
-                <div class="col-md-6">{{movieDetail.description}}</div>
+                <div class="col-sm-6">
+                    <div >Description:</div>
+                    <div >{{movieDetail.description}}</div>
+                </div>
             </div>
+                        
         </div>
-            
-            
-        </div>
+        
     </div>
-
-
+    
 </div>
