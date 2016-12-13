@@ -1,15 +1,15 @@
 ﻿var app = angular.module('MoviesApp', ['ngRoute', 'ngAnimate', 'toastr']);
 
-app.config(function ($routeProvider) {
+app.config(['$routeProvider', function ($routeProvider) {
 
   $routeProvider
   .when('/', {
-    templateUrl: 'app/views/page-movie-list.html',
+    templateUrl: 'views/page-movie-list.html',
     controller: 'movieListController'
   })
 
   .when('/:movieId', {
-    templateUrl: 'app/views/page-movie-detail.html',
+    templateUrl: 'views/page-movie-detail.html',
     controller: 'movieDetailController'
   })
 
@@ -17,7 +17,7 @@ app.config(function ($routeProvider) {
     redirectTo: '/'
   })
 
-});
+}]);
 
 app.filter('yesNo', function () {
   return function (input) {
