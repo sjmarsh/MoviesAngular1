@@ -1,7 +1,10 @@
 ﻿app.service('movieService', ['$http', function ($http) {
   
   // TODO: config for base url
-  var baseUrl = 'http://localhost:5000' + '/api/movies';
+  // local dev
+  //var baseUrl = 'http://localhost:5000' + '/api/movies';
+  // ext
+  var baseUrl = 'http://moviesbeanstalk.yxmdgbxk2b.ap-southeast-2.elasticbeanstalk.com/api/movies'
 
   this.getMovies = function(){
     return $http.get(baseUrl);
