@@ -68,6 +68,7 @@
   <ItemGroup>
     <Content Include="app\controllers\movieDetailController.js" />
     <Content Include="app\controllers\movieListController.js" />
+    <Content Include="app\services\movieSearchService.js" />
     <Content Include="app\views\page-movie-list.html" />
     <Content Include="app\views\page-movie-detail.html" />
     <Content Include="assets\css\animation.css" />

@@ -15,7 +15,10 @@ Explores:
 
 ## TODO: ##
 </br>
-- Manage state between navigation (ie. remember search results)  
+- <del>Manage state between navigation (ie. remember search results)</del>  
+- Get movies by category  
+- Better style for search box   
+- Fix android - hide keyboard when 'Enter' pressed for search  
 - Dev vs Prod deployment configuration  
 - Add/Edit gulp to allow for local vs prod builds  
 - Automate deployment to aws  
