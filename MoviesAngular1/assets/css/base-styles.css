@@ -1,9 +1,7 @@
 ﻿body {
-
 }
 
 .search-box {
-    width: 180px;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
@@ -13,13 +11,14 @@
     background-position: 10px 10px; 
     background-repeat: no-repeat;
     padding: 12px 20px 12px 40px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
-    margin: 10px 2px 10px 2px
+    margin: 10px 2px 10px 2px;
+    width: 80%;
 }
 
-.search-box:focus {
-    width: 90%;
+.search-button {
+    vertical-align: middle;
+    margin-top: 5px;
+    margin-left: 5px;
 }
 
 .movie-list {

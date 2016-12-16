@@ -18,6 +18,7 @@
     var ENTER = 13;
     if (event && event.keyCode === ENTER) {
       getMoviesByTitle();
+      event.target.blur();
     }
   }
 
