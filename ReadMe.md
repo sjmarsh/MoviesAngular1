@@ -21,7 +21,7 @@ Explores:
 - Get movies by category  
 - Infinite scroll  
 - <del>Better style for search box</del>   
-- Fix android - hide keyboard when 'Enter' pressed for search  
+- <del>Fix android - hide keyboard when 'Enter' pressed for search</del>  
 - Dev vs Prod deployment configuration  
 - Add/Edit gulp to allow for local vs prod builds  
 - <del>Automate deployment to aws</del> (need better parameterisation)  
