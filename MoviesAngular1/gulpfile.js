@@ -17,6 +17,9 @@ var stylesPath = 'assets/css';
 var imagesPath = 'assets/img';
 var outputPath = 'dist';
 
+var config = JSON.parse(fs.readFileSync('c:\\aws\\awsaccess.json'));
+var s3 = require('gulp-s3-upload')(config);
+
 /*
 Ref: https://github.com/gulpjs/gulp/tree/master/docs/recipes
 */
@@ -88,6 +91,20 @@ gulp.task('images', ['clean'], function () {
 gulp.task('favicon', ['clean'], function () {
   return gulp.src('./favicon.ico')
     .pipe(gulp.dest(outputPath));
+});
+
+/*
+Ref: https://www.npmjs.com/package/gulp-s3-upload
+*/
+gulp.task('publish', function() {
+  return gulp.src("./dist/**")
+        .pipe(s3({
+            Bucket: 'movies-angular1',  
+            ACL:    'public-read'       
+        }, {
+            maxRetries: 5
+        }))
+    ;
 });
 
 gulp.task('default', ['index', 'views', 'scripts','styles', 'images', 'favicon']);
