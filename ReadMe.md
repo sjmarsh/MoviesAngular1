@@ -2,10 +2,18 @@
 
 Front-end for [https://github.com/sjmarsh/MoviesNetCore](https://github.com/sjmarsh/MoviesNetCore "https://github.com/sjmarsh/MoviesNetCore") created using angular 1.5.8. 
 
-Explores:
+Explores:  
 - angular js  
 - gulp js  
 - Deploying an angular application to aws using an S3 bucket  
+
+## Setup: ##
+</br>
+- Clone the repo from GitHub  
+- Run npm install  
+- run gulp  
+- Start the app using: npm run app
+
 
 ## References: ##
 </br>

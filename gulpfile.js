@@ -95,6 +95,7 @@ gulp.task('favicon', ['clean'], function () {
 
 /*
 Ref: https://www.npmjs.com/package/gulp-s3-upload
+     http://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/loading-node-credentials-json-file.html
 */
 gulp.task('publish', function() {
   return gulp.src("./dist/**")
