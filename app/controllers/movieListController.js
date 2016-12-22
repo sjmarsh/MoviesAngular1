@@ -1,4 +1,4 @@
-﻿app.controller('movieListController', ['$scope', '$location', 'toastr' , 'movieService', 'movieSearchService', function ($scope, $location, toastr, movieService, movieSearchService) {
+﻿app.controller('movieListController', ['$scope', '$location', 'toastr', 'movieService', 'movieSearchService', 'referenceDataService', function ($scope, $location, toastr, movieService, movieSearchService, referenceDataService) {
 
   $scope.pageClass = 'page-movie-list';
 
@@ -6,6 +6,9 @@
 
   $scope.searchFilter = "";
   $scope.movieList = [];
+
+  $scope.selectedCategory = 'Category';
+  $scope.categoryList = [];
 
   initialize();
   
@@ -26,13 +29,39 @@
     getMoviesByTitle();
   }
 
+  $scope.selectCategory = function($event, category){
+    $event.stopPropagation();
+    $event.preventDefault();
+
+    console.log('Category: ' + category);
+  }
+
   function initialize() {
+
+    populateCategoryList();
+
     if (movieSearchService.getLastSearchFilter()) {
       $scope.searchFilter = movieSearchService.getLastSearchFilter();
     };
 
     getMovies();
-  }
+  };
+
+  function populateCategoryList() {
+    referenceDataService.getCategories()
+      .success(function(categories){
+        $scope.categoryList = categories;
+      })
+      .error(function(error){
+        var message = 'Error loading categories.';
+        if (error) {
+          toastr.error(message + ' Error: ' + error.message);
+        }
+        else {
+          toastr.error(message);
+        }
+      });
+  };
 
   function getMovies() {
 

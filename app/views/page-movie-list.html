@@ -1,8 +1,17 @@
 ﻿<div id="movie-list">
-
-    <div>
-        <input type="text" name="search" placeholder="Search.." ng-model="searchFilter" class="search-box" ng-keypress="searchKeyPress($event)">
-        <input type="button" class="btn btn-primary search-button" value="Go" ng-click="search()" />
+    <div class="container search-area">
+        <div class="row">
+            <input type="text" name="search" placeholder="Search.." ng-model="searchFilter" class="search-box col-lg-6 col-md-6" ng-keypress="searchKeyPress($event)">
+            <div class="drop-down col-lg-3 col-md-2">
+                <button class="dropbtn btn">Category</button>
+                <div class="drop-down-content">
+                    <div ng-repeat="category in categoryList">
+                        <a href="#" ng-click="selectCategory($event, category)">{{category}}</a>
+                    </div>
+                </div>
+            </div>            
+            <input type="button" class="btn btn-primary search-button col-lg-3 col-md-2" value="Go" ng-click="search()" />
+        </div>
     </div>
 
     <table class="table table-hover search-results">
