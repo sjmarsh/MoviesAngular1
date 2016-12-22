@@ -3,7 +3,7 @@
         <div class="row">
             <input type="text" name="search" placeholder="Search.." ng-model="searchFilter" class="search-box col-lg-6 col-md-6" ng-keypress="searchKeyPress($event)">
             <div class="drop-down col-lg-3 col-md-2">
-                <button class="dropbtn btn">Category</button>
+                <button class="dropbtn btn">{{selectedCategory}}</button>
                 <div class="drop-down-content">
                     <div ng-repeat="category in categoryList">
                         <a href="#" ng-click="selectCategory($event, category)">{{category}}</a>
@@ -11,6 +11,15 @@
                 </div>
             </div>            
             <input type="button" class="btn btn-primary search-button col-lg-3 col-md-2" value="Go" ng-click="search()" />
+        </div>
+    </div>
+
+    <div class="category-selections">
+        <div ng-repeat="selection in selectedCategories">
+            <span class="tag label label-info">
+                <span>{{selection}}</span>
+                <a><i class="remove glyphicon glyphicon-remove-sign glyphicon-white" ng-click="removeCategorySelection(selection)"></i></a> 
+            </span>
         </div>
     </div>
 
