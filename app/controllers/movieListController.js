@@ -106,27 +106,22 @@
   function searchForMovies() {
 
     movieSearchService.storeLastSearchFilter($scope.searchFilter);
-
-    if ($scope.searchFilter && $scope.searchFilter.length > 0) {
-      movieService.getMoviesByQuery($scope.searchFilter, $scope.selectedCategory)
-      .success(function (movies) {
-        $scope.movieList = movies;
-        movieSearchService.storeResults(movies);
-      })
-      .error(function (error) {
-        var message = 'Error loading movies.';
-        if (error) {
-          toastr.error(message + ' Error: ' + error.message);
-        }
-        else {
-          toastr.error(message);
-        }
-      })
-    }
-    else {
-      $scope.movieList = [];
-      movieSearchService.storeResults([]);
-    }
+    
+    movieService.getMoviesByQuery($scope.searchFilter, $scope.selectedCategory)
+    .success(function (movies) {
+      $scope.movieList = movies;
+      movieSearchService.storeResults(movies);
+    })
+    .error(function (error) {
+      var message = 'Error loading movies.';
+      if (error) {
+        toastr.error(message + ' Error: ' + error.message);
+      }
+      else {
+        toastr.error(message);
+      }
+    });
+    
   };
 
 }]);
