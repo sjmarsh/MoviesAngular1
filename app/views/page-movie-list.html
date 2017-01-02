@@ -1,44 +1,53 @@
 ﻿<div id="movie-list">
     <div class="container search-area">
         <div class="row">
-            <input type="text" name="search" placeholder="Search.." ng-model="searchFilter" class="search-box col-lg-6 col-md-6" ng-keypress="searchKeyPress($event)">
-            <div class="drop-down col-lg-3 col-md-2">
-                <button class="dropbtn btn">{{selectedCategory}}</button>
-                <div class="drop-down-content">
-                    <div ng-repeat="category in categoryList">
-                        <a href="#" ng-click="selectCategory($event, category)">{{category}}</a>
-                    </div>
-                </div>
-            </div>            
+            <input type="text" name="search" placeholder="Search.." ng-model="searchFilter" class="search-box col-lg-9 col-md-9" ng-keypress="searchKeyPress($event)">
             <input type="button" class="btn btn-primary search-button col-lg-3 col-md-2" value="Go" ng-click="search()" />
         </div>
     </div>
 
-    <div class="category-selections">
-        <div ng-repeat="selection in selectedCategories">
-            <span class="tag label label-info">
-                <span>{{selection}}</span>
-                <a><i class="remove glyphicon glyphicon-remove-sign glyphicon-white" ng-click="removeCategorySelection(selection)"></i></a> 
-            </span>
+    <div class="container-fluid category-area">
+        <div class="row">
+            <div class=" col-lg-2 col-md-3 col-sm-5 col-xs-6">
+                <div class="drop-down">
+                    <button class="dropbtn btn">Category(ies)</button>
+                    <div class="drop-down-content">
+                        <div ng-repeat="category in categoryList">
+                            <a href="#" ng-click="selectCategory($event, category)">{{category}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+
+            <div class="category-selections col-lg-10 col-md-9 col-sm-7 col-xs-6">
+                <div ng-repeat="selection in selectedCategories">
+                    <span class="tag label label-info">
+                        <span>{{selection}}</span>
+                        <a><i class="remove glyphicon glyphicon-remove-sign glyphicon-white" ng-click="removeCategorySelection(selection)"></i></a> 
+                    </span>
+                </div>
+            </div>
         </div>
     </div>
 
-    <table class="table table-hover search-results">
-        <tbody>
-            <tr ng-repeat="movie in movieList">
-                <td ng-click="goToDetail(movie.id)">
-                    <div>
-                        <P class="movie-list-title">{{movie.title}}</P>
-                        <p class="movie-list-description">{{movie.releaseYear}} - {{movie.category}} - {{movie.runningTime}}</p>
-                    </div>
-                </td>
-                <td>
-                    <a href="#/{{movie.id}}" class="detail-button" >Detail</a>
-                </td>
+    <div class="search-results">
+        <table class="table table-hover">
+            <tbody>
+                <tr ng-repeat="movie in movieList">
+                    <td ng-click="goToDetail(movie.id)">
+                        <div>
+                            <P class="movie-list-title">{{movie.title}}</P>
+                            <p class="movie-list-description">{{movie.releaseYear}} - {{movie.category}} - {{movie.runningTime}}</p>
+                        </div>
+                    </td>
+                    <td>
+                        <a href="#/{{movie.id}}" class="detail-button" >Detail</a>
+                    </td>
 
-            </tr>
-        </tbody>
-    </table>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <div ng-show="movieList.length === 0">
         <p>No Movies Found</p>
     </div>

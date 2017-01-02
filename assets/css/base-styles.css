@@ -21,6 +21,10 @@
     margin-top: 5px;
 }
 
+.search-results {
+    margin-top: 10px;
+}
+
 .movie-list {
     height: 350px;
     overflow: auto;
@@ -85,16 +89,19 @@
 }
 
 /* category selections */
-.category-selections{
+.category-area {
     margin-top: 10px;
     margin-bottom: 10px;
 }
 
 .tag {
   font-size: 14px;
+  font-weight: normal;
   padding: .3em .4em .4em;
-  margin: 0 .1em;
+  margin: .1em .1em;
   float: left;
+  background: #ccc;
+  color: #000000;
 }
 .tag a {
   color: #bbb;
