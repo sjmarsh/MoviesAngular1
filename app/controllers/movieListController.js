@@ -4,6 +4,7 @@
 
   $scope.statusMessage = 'OK';
 
+  $scope.isSearchPanelVisible;
   $scope.searchFilter = "";
   $scope.movieList = [];
 
@@ -24,11 +25,11 @@
       searchForMovies();
       event.target.blur();
     }
-  }
+  };
 
   $scope.search = function () {
     searchForMovies();
-  }
+  };
 
   $scope.selectCategory = function($event, category){
     $event.stopPropagation();
@@ -42,8 +43,7 @@
     else{
       $scope.selectedCategories.push(category);
     }
-    
-  }
+  };
 
   $scope.removeCategorySelection = function(category){
     // nb. indexOf not supported in older browsers
@@ -51,6 +51,18 @@
     if(index > -1){
       $scope.selectedCategories.splice(index, 1);
     }
+  };
+
+  $scope.toggleSearchPanel = function(){
+    if(movieSearchService.isSearchPanelVisible()){
+      movieSearchService.hideSearchPanel();
+      $scope.isSearchPanelVisible = movieSearchService.isSearchPanelVisible();
+    }
+    else{
+      movieSearchService.showSearchPanel();
+      $scope.isSearchPanelVisible = movieSearchService.isSearchPanelVisible();
+    }
+
   }
 
   function initialize() {
@@ -60,6 +72,8 @@
     if (movieSearchService.getLastSearchFilter()) {
       $scope.searchFilter = movieSearchService.getLastSearchFilter();
     };
+
+    $scope.isSearchPanelVisible = movieSearchService.isSearchPanelVisible();
 
     getMovies();
   };
