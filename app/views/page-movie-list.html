@@ -37,8 +37,11 @@
         </div>
     </div>
 
-    <div>
-       <input type="button" value="Hide Show Search Panel" ng-click="toggleSearchPanel()">
+    <div style="text-align: center">
+        <a href="" ng-click="toggleSearchPanel()">
+            <span ng-show="isSearchPanelVisible">^^ Hide Search Panel ^^</span>
+            <span ng-hide="isSearchPanelVisible">Show Search Panel &#xbb;</span>
+        </a> 
     </div>
 
     <div class="search-results">
