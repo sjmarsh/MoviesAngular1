@@ -121,7 +121,7 @@
 
     movieSearchService.storeLastSearchFilter($scope.searchFilter);
     
-    movieService.getMoviesByQuery($scope.searchFilter, $scope.selectedCategory)
+    movieService.getMoviesByQuery($scope.searchFilter, $scope.selectedCategories)
     .success(function (movies) {
       $scope.movieList = movies;
       movieSearchService.storeResults(movies);
