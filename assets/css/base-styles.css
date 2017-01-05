@@ -1,4 +1,7 @@
-﻿body {
+﻿html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
 }
 
 .search-area {
@@ -30,8 +33,8 @@
 }
 
 .movie-list {
-    height: 350px;
-    overflow: auto;
+   height: 100%;
+   position: relative; 
 }
 
 .movie-list-title {
