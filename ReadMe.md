@@ -22,6 +22,8 @@ Explores:
 [https://www.linkedin.com/pulse/three-easy-ways-deploy-angular-app-free-david-meza](https://www.linkedin.com/pulse/three-easy-ways-deploy-angular-app-free-david-meza "https://www.linkedin.com/pulse/three-easy-ways-deploy-angular-app-free-david-meza")
 </br>
 [http://docs.aws.amazon.com/powershell/latest/userguide/pstools-s3-upload-object.html](http://docs.aws.amazon.com/powershell/latest/userguide/pstools-s3-upload-object.html "http://docs.aws.amazon.com/powershell/latest/userguide/pstools-s3-upload-object.html")
+</br>
+[https://www.npmjs.com/package/ng-infinite-scroll](https://www.npmjs.com/package/ng-infinite-scroll "https://www.npmjs.com/package/ng-infinite-scroll")
 
 ## TODO: ##
 </br>

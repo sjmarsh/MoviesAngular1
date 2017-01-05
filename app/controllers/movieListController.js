@@ -4,6 +4,9 @@
 
   $scope.statusMessage = 'OK';
 
+  $scope.shouldDisableGetMoreMovies = false;
+  $scope.gettingMovies = false;
+
   $scope.isSearchPanelVisible;
   $scope.searchFilter = "";
   $scope.movieList = [];
@@ -42,6 +45,7 @@
     }
     else{
       $scope.selectedCategories.push(category);
+      movieSearchService.storeLastSelectedCategories($scope.selectedCategories);
     }
   };
 
@@ -50,6 +54,7 @@
     var index = $scope.selectedCategories.indexOf(category);
     if(index > -1){
       $scope.selectedCategories.splice(index, 1);
+      movieSearchService.storeLastSelectedCategories($scope.selectedCategories);
     }
   };
 
@@ -62,8 +67,37 @@
       movieSearchService.showSearchPanel();
       $scope.isSearchPanelVisible = movieSearchService.isSearchPanelVisible();
     }
+  };
 
-  }
+  $scope.getMoreMovies = function(){
+    var skip = movieSearchService.nextPageSkip();
+    var take = movieSearchService.nextPageTakeSize();
+
+    if(movieSearchService.hasMorePages()){
+      updateGetMoreMovieStatus(true);
+      movieService.getMoviesByQuery($scope.searchFilter, $scope.selectedCategories, skip, take)
+        .success(function(movieResponse){
+          var movies = movieResponse.movies;
+          for(var i = 0; i < movies.length; i++)
+          {
+            $scope.movieList.push(movies[i]);
+          }
+          movieSearchService.storeResults(movieResponse);        
+          updateGetMoreMovieStatus(false);
+          movieSearchService.incrementPage();
+        })
+        .error(function(error){
+          updateGetMoreMovieStatus(false);
+          var message = 'Error getting more movies.';
+          if (error) {
+            toastr.error(message + ' Error: ' + error.message);
+          }
+          else {
+            toastr.error(message);
+          }
+        });      
+      }
+  };
 
   function initialize() {
 
@@ -72,6 +106,8 @@
     if (movieSearchService.getLastSearchFilter()) {
       $scope.searchFilter = movieSearchService.getLastSearchFilter();
     };
+    
+    $scope.selectedCategories = movieSearchService.getLastSelectedCategories();
 
     $scope.isSearchPanelVisible = movieSearchService.isSearchPanelVisible();
 
@@ -95,17 +131,19 @@
   };
 
   function getMovies() {
-
     if (movieSearchService.hasStoredResults()) {
-      $scope.movieList = movieSearchService.getStoredResults();
+      $scope.movieList = movieSearchService.getStoredResults().movies;
     }
     else {
+      updateGetMoreMovieStatus(true);
       movieService.getMovies()
-      .success(function (movies) {
-        $scope.movieList = movies;
-        movieSearchService.storeResults(movies);
+      .success(function (movieResponse) {
+        $scope.movieList = movieResponse.movies;
+        movieSearchService.storeResults(movieResponse);
+        updateGetMoreMovieStatus(false);
       })
       .error(function (error) {
+        updateGetMoreMovieStatus(false);
         var message = 'Error loading movies.';
         if (error) {
           toastr.error(message + ' Error: ' + error.message);
@@ -118,15 +156,18 @@
   };
 
   function searchForMovies() {
-
+    updateGetMoreMovieStatus(true);
     movieSearchService.storeLastSearchFilter($scope.searchFilter);
+    movieSearchService.resetCurrentPage();
     
     movieService.getMoviesByQuery($scope.searchFilter, $scope.selectedCategories)
-    .success(function (movies) {
-      $scope.movieList = movies;
-      movieSearchService.storeResults(movies);
+    .success(function (movieResponse) {
+      $scope.movieList = movieResponse.movies;
+      movieSearchService.storeResults(movieResponse);
+      updateGetMoreMovieStatus(false);
     })
     .error(function (error) {
+      updateGetMoreMovieStatus(false);
       var message = 'Error loading movies.';
       if (error) {
         toastr.error(message + ' Error: ' + error.message);
@@ -134,8 +175,12 @@
       else {
         toastr.error(message);
       }
-    });
-    
+    }); 
   };
+
+  function updateGetMoreMovieStatus(gettingMovies){
+    $scope.gettingMovies = gettingMovies;
+    $scope.shouldDisableGetMoreMovies = $scope.gettingMovies || !movieSearchService.hasMorePages;
+  }
 
 }]);

@@ -15,6 +15,7 @@ var scriptsPath = 'app';
 var viewsPath = 'app/views';
 var stylesPath = 'assets/css';
 var imagesPath = 'assets/img';
+var libPath = 'assets/lib';
 var outputPath = 'dist';
 
 var config = JSON.parse(fs.readFileSync('c:\\aws\\awsaccess.json'));
@@ -88,6 +89,34 @@ gulp.task('images', ['clean'], function () {
         .pipe(gulp.dest(outputPath + '/img'));
 });
 
+gulp.task('lib', ['clean'], function () {
+  var folders = getFolders(libPath);
+
+  var tasks = folders.map(function (folder) {
+    return gulp.src(path.join(libPath, folder, '/**/*.js'))
+      // concat into foldername.js
+      .pipe(concat(folder + '.js'))
+      // write to output
+     // .pipe(gulp.dest(outputPath))
+      // minify
+      .pipe(uglify())
+      // rename to folder.min.js
+      .pipe(rename(folder + '.min.js'))
+      // write to output again
+      .pipe(gulp.dest(outputPath));
+  });
+
+  // process all remaining files in libPath root into lib.js and lib.min.js files
+  var root = gulp.src(path.join(libPath, '/*.js'))
+       .pipe(concat('lib.js'))
+       //.pipe(gulp.dest(outputPath))
+       .pipe(uglify())
+       .pipe(rename('lib.min.js'))
+       .pipe(gulp.dest(outputPath));
+
+  return merge(tasks, root);
+});
+
 gulp.task('favicon', ['clean'], function () {
   return gulp.src('./favicon.ico')
     .pipe(gulp.dest(outputPath));
@@ -108,4 +137,4 @@ gulp.task('publish', function() {
     ;
 });
 
-gulp.task('default', ['index', 'views', 'scripts','styles', 'images', 'favicon']);
+gulp.task('default', ['index', 'views', 'scripts','styles', 'images', 'lib', 'favicon']);
