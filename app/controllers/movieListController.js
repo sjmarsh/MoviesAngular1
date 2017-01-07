@@ -82,7 +82,6 @@
           {
             $scope.movieList.push(movies[i]);
           }
-          movieSearchService.storeResults(movieResponse);        
           updateGetMoreMovieStatus(false);
           movieSearchService.incrementPage();
         })
