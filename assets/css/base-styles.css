@@ -4,6 +4,19 @@
     margin: 0;
 }
 
+.app-header {
+    /*position: fixed;*/
+}
+
+.movie-list {
+   height: 100%;
+   position: relative; 
+}
+
+.search-wrapper {
+    /*position: fixed;*/
+}
+
 .search-area {
     margin: 10px 5px 10px 5px;
 }
@@ -32,17 +45,12 @@
     overflow-y: scroll;
 }
 
-.movie-list {
-   height: 100%;
-   position: relative; 
-}
-
-.movie-list-title {
+.search-result-title {
     font-size:2em;
     font-family: 'Segoe UI', Arial
 }
 
-.movie-list-description {
+.search-result-description {
     font-size: 1em;
     font-family: 'Segoe UI', Arial
 }
@@ -65,6 +73,10 @@
     height: 30px;
     width: 30px;
     text-indent: -99999px;
+}
+
+.movie-detail-wrapper {
+    /*position: fixed;*/
 }
 
 .movie-detail-nav {

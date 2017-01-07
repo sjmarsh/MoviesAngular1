@@ -1,57 +1,58 @@
 ﻿<div id="movie-list">
-    <div class="search-panel" ng-show="isSearchPanelVisible">
-        <div class="container search-area">
-            <div class="row">
-                <input type="text" name="search" placeholder="Search.." ng-model="searchFilter" class="search-box col-lg-9 col-md-9 col-sm-9 col-xs-9" ng-keypress="searchKeyPress($event)">
-                <input type="button" class="btn btn-primary search-button col-lg-3 col-md-3 col-sm-3 col-xs-3" value="Go" ng-click="search()" />
+    <div class="search-wrapper">
+        <div class="search-panel" ng-show="isSearchPanelVisible">
+            <div class="container search-area">
+                <div class="row">
+                    <input type="text" name="search" placeholder="Search.." ng-model="searchFilter" class="search-box col-lg-9 col-md-9 col-sm-9 col-xs-9" ng-keypress="searchKeyPress($event)">
+                    <input type="button" class="btn btn-primary search-button col-lg-3 col-md-3 col-sm-3 col-xs-3" value="Go" ng-click="search()" />
+                </div>
             </div>
-        </div>
 
-        <div class="container-fluid category-area">
-            <div class="row">
-                <div class=" col-lg-2 col-md-3 col-sm-5 col-xs-6">
-                    <div class="drop-down">
-                        <button class="dropbtn btn">
-                            <div>
-                            <span>Category(ies)</span>
-                            <span class="arrow-down arrow-align-vertical-centre arrow-with-horizontal-margins"</span>
-                            </div>
-                        </button>
-                        <div class="drop-down-content">
-                            <div ng-repeat="category in categoryList">
-                                <a href="#" ng-click="selectCategory($event, category)">{{category}}</a>
+            <div class="container-fluid category-area">
+                <div class="row">
+                    <div class=" col-lg-2 col-md-3 col-sm-5 col-xs-6">
+                        <div class="drop-down">
+                            <button class="dropbtn btn">
+                                <div>
+                                <span>Category(ies)</span>
+                                <span class="arrow-down arrow-align-vertical-centre arrow-with-horizontal-margins"</span>
+                                </div>
+                            </button>
+                            <div class="drop-down-content">
+                                <div ng-repeat="category in categoryList">
+                                    <a href="#" ng-click="selectCategory($event, category)">{{category}}</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>            
+                    </div>            
 
-                <div class="category-selections col-lg-10 col-md-9 col-sm-7 col-xs-6">
-                    <div ng-repeat="selection in selectedCategories">
-                        <span class="tag label label-info">
-                            <span>{{selection}}</span>
-                            <a><i class="remove glyphicon glyphicon-remove-sign glyphicon-white" ng-click="removeCategorySelection(selection)"></i></a> 
-                        </span>
+                    <div class="category-selections col-lg-10 col-md-9 col-sm-7 col-xs-6">
+                        <div ng-repeat="selection in selectedCategories">
+                            <span class="tag label label-info">
+                                <span>{{selection}}</span>
+                                <a><i class="remove glyphicon glyphicon-remove-sign glyphicon-white" ng-click="removeCategorySelection(selection)"></i></a> 
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div style="text-align: center">
-        <a href="" ng-click="toggleSearchPanel()">
-            <span ng-show="isSearchPanelVisible">^^ Hide Search Panel ^^</span>
-            <span ng-hide="isSearchPanelVisible">Show Search Panel &#xbb;</span>
-        </a> 
+        <div style="text-align: center">
+            <a href="" ng-click="toggleSearchPanel()">
+                <span ng-show="isSearchPanelVisible">^^ Hide Search Panel ^^</span>
+                <span ng-hide="isSearchPanelVisible">Show Search Panel &#xbb;</span>
+            </a> 
+        </div>
     </div>
-
     <div class="search-results">
         <table class="table table-hover" infinite-scroll="getMoreMovies()" infinite-scroll-distance="0" infinite-scroll-parent="true" infinite-scroll-disabled="shouldDisableGetMoreMovies" infinite-scroll-immediate-check="false">
             <tbody>
                 <tr ng-repeat="movie in movieList">
                     <td ng-click="goToDetail(movie.id)">
                         <div>
-                            <P class="movie-list-title">{{movie.title}}</P>
-                            <p class="movie-list-description">{{movie.releaseYear}} - {{movie.category}} - {{movie.runningTime}}</p>
+                            <P class="search-result-title">{{movie.title}}</P>
+                            <p class="search-result-description">{{movie.releaseYear}} - {{movie.category}} - {{movie.runningTime}}</p>
                         </div>
                     </td>
                     <td>
