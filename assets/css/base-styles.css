@@ -45,6 +45,38 @@
     overflow-y: scroll;
 }
 
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+    .search-result-title {
+        max-height: 360px;
+    }
+}
+
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 568px){
+    .search-results{
+        max-height: 380px;
+    }
+}
+
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+    .search-results{
+        max-height: 740px;
+    }
+}
+
+@media only screen 
+and (min-device-width : 720px) 
+and (max-device-width : 1280px) {
+    .search-results{
+        max-height: 740px;
+    }
+}
+
 .search-result-title {
     font-size:2em;
     font-family: 'Segoe UI', Arial
