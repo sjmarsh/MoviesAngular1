@@ -10,6 +10,7 @@ var uglify = require('gulp-uglify');
 var concatCSS = require('gulp-concat-css');
 var cleanCSS = require('gulp-clean-css');
 var imagemin = require('gulp-imagemin');
+var gulpNgConfig = require('gulp-ng-config');
 
 var scriptsPath = 'app';
 var viewsPath = 'app/views';
@@ -126,7 +127,7 @@ gulp.task('favicon', ['clean'], function () {
 Ref: https://www.npmjs.com/package/gulp-s3-upload
      http://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/loading-node-credentials-json-file.html
 */
-gulp.task('publish', function() {
+gulp.task('publish', ['prod'], function() {
   return gulp.src("./dist/**")
         .pipe(s3({
             Bucket: 'movies-angular1',  
@@ -137,4 +138,23 @@ gulp.task('publish', function() {
     ;
 });
 
-gulp.task('default', ['index', 'views', 'scripts','styles', 'images', 'lib', 'favicon']);
+gulp.task('applyLocalConfig', function() {
+  return gulp.src('./app/config.json')
+    .pipe(gulpNgConfig('MoviesApp.config', {
+      environment: 'local'
+    }))
+    .pipe(gulp.dest('./app/'));
+});
+
+gulp.task('applyProdConfig', function() {
+  return gulp.src('./app/config.json')
+    .pipe(gulpNgConfig('MoviesApp.config', {
+      environment: 'production'
+    }))
+    .pipe(gulp.dest('./app/'));
+});
+
+
+gulp.task('default', ['applyLocalConfig', 'index', 'views', 'scripts','styles', 'images', 'lib', 'favicon']);
+
+gulp.task('prod', ['applyProdConfig', 'index', 'views', 'scripts','styles', 'images', 'lib', 'favicon']);

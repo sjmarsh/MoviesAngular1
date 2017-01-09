@@ -1,10 +1,6 @@
-﻿app.service('movieService', ['$http', function ($http) {
+﻿app.service('movieService', ['$http', 'EnvironmentConfig',  function ($http, EnvironmentConfig) {
   
-  // TODO: config for base url
-  // local dev
-  //var baseUrl = 'http://localhost:5000' + '/api/movies';
-  // ext
-  var baseUrl = 'http://moviesbeanstalk.yxmdgbxk2b.ap-southeast-2.elasticbeanstalk.com/api/movies'
+  var baseUrl = EnvironmentConfig.api + '/api/movies';
 
   this.getMovies = function(skip, take){
     var paging = '';
