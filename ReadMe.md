@@ -14,6 +14,11 @@ Explores:
 - run gulp  
 - Start the app using: npm run app
 
+## Deployment: ##
+</br>
+- npm run publish  
+(Uses an npm script taks to call gulp --production && gulp publish)
+
 
 ## References: ##
 </br>
@@ -34,8 +39,8 @@ Explores:
 - <del>Infinite scroll</del>  
 - <del>Better style for search box</del>   
 - <del>Fix android - hide keyboard when 'Enter' pressed for search</del>  
-- Dev vs Prod deployment configuration  
-- Add/Edit gulp to allow for local vs prod builds  
+- <del>Dev vs Prod deployment configuration</del>  
+- <del>Add/Edit gulp to allow for local vs prod builds</del>  
 - <del>Automate deployment to aws</del> (need better parameterisation)  
 - Automated unit tests  
 - Minify html?  
