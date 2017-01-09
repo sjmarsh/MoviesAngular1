@@ -24,6 +24,8 @@ Explores:
 [http://docs.aws.amazon.com/powershell/latest/userguide/pstools-s3-upload-object.html](http://docs.aws.amazon.com/powershell/latest/userguide/pstools-s3-upload-object.html "http://docs.aws.amazon.com/powershell/latest/userguide/pstools-s3-upload-object.html")
 </br>
 [https://www.npmjs.com/package/ng-infinite-scroll](https://www.npmjs.com/package/ng-infinite-scroll "https://www.npmjs.com/package/ng-infinite-scroll")
+</br>
+[https://www.npmjs.com/package/gulp-ng-config](https://www.npmjs.com/package/gulp-ng-config "https://www.npmjs.com/package/gulp-ng-config")
 
 ## TODO: ##
 </br>
