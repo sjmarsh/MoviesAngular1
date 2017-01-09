@@ -29,7 +29,7 @@ Explores:
 </br>
 - <del>Manage state between navigation (ie. remember search results)</del>  
 - <del>Get movies by category</del>  
-- Infinite scroll  
+- <del>Infinite scroll</del>  
 - <del>Better style for search box</del>   
 - <del>Fix android - hide keyboard when 'Enter' pressed for search</del>  
 - Dev vs Prod deployment configuration  

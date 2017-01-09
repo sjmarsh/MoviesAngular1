@@ -1,7 +1,10 @@
 ﻿html, body {
-    width: 99%;
-    height: 99%;
-    margin: 0;
+    width: 98%;
+    height: 98%;
+    
+}
+body {
+    margin: 1px;
 }
 
 .app-header {
