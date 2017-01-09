@@ -20,6 +20,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-s3-upload": "^1.6.4",
     "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.8",
     "http-server": "^0.9.0",
     "merge-stream": "^1.0.1"
   },
