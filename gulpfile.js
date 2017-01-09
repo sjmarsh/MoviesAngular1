@@ -62,8 +62,6 @@ gulp.task('scripts', ['clean'], function () {
       .pipe(concat(folder + '.js'))
       // minify if required
       .pipe(config.production ? uglify() : util.noop())
-      // rename to folder.min.js
-      .pipe(rename(folder + '.min.js'))
       // write to output again
       .pipe(gulp.dest(config.outputPath));
   });
@@ -72,7 +70,6 @@ gulp.task('scripts', ['clean'], function () {
   var root = gulp.src(path.join(config.scriptsPath, '/*.js'))
        .pipe(concat('main.js'))
        .pipe(config.production ? uglify() : util.noop())
-       .pipe(rename('main.min.js'))
        .pipe(gulp.dest(config.outputPath));
 
   return merge(tasks, root);
@@ -80,7 +77,7 @@ gulp.task('scripts', ['clean'], function () {
 
 gulp.task('styles', ['clean'], function () {
   return gulp.src(config.stylesPath + '/*.css')
-    .pipe(concatCSS('styles.min.css'))
+    .pipe(concatCSS('styles.css'))
     .pipe(config.production ? cleanCSS() : util.noop())
     .pipe(gulp.dest(config.outputPath + '/css'));
 });
@@ -99,8 +96,6 @@ gulp.task('lib', ['clean'], function () {
       // concat into foldername.js
       .pipe(concat(folder + '.js'))
       .pipe(config.production ? uglify() : util.noop)
-      // rename to folder.min.js
-      .pipe(rename(folder + '.min.js'))
       // write to output again
       .pipe(gulp.dest(config.outputPath));
   });
@@ -109,7 +104,6 @@ gulp.task('lib', ['clean'], function () {
   var root = gulp.src(path.join(config.libPath, '/*.js'))
        .pipe(concat('lib.js'))
        .pipe(config.production ? uglify() : util.noop())
-       .pipe(rename('lib.min.js'))
        .pipe(gulp.dest(config.outputPath));
 
   return merge(tasks, root);
