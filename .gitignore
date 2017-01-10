@@ -304,5 +304,10 @@ $RECYCLE.BIN/
 
 # dist folder
 dist
+
+#config
 app/config.js
 app/config.json
+
+#karma output
+karma_html
