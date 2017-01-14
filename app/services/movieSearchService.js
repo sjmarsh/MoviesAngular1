@@ -33,15 +33,19 @@
     hasStoredResults: function() {
       return searchResults !== null && searchResults.count > 0;
     },
+
     resetCurrentPage: function () {
       currentPage = 1;
     },
     incrementPage: function() {
       currentPage = currentPage +=1;
     },
+    currentPage: function() {
+      return currentPage;
+    },
     hasMorePages: function() {
       var totalPages = Math.ceil(searchResults.count / PAGE_SIZE);
-      return currentPage <= totalPages;
+      return currentPage < totalPages;
     },
     nextPageSkip: function() {
       return currentPage * PAGE_SIZE;

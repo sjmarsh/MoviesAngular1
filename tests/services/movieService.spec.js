@@ -22,8 +22,8 @@ describe('movieService', function(){
       movieService = _movieService_;
       $httpBackend = _$httpBackend_; 
       EnvironmentConfig = _EnvironmentConfig_;
-    })
-  })
+    });
+  });
   
   describe('#getMovies', function(){
     
