@@ -13,13 +13,13 @@
   function getMovie() {
     var movieId = $routeParams.movieId;
     movieService.getMovie(movieId)
-    .success(function (movie) {
-      $scope.movieDetail = movie;
-    })
-    .error(function (error) {
+    .then(function success(movieResponse) {
+      $scope.movieDetail = movieResponse.data;
+    },
+    function error(errorResponse) {
       var message = 'Error retrieving movie details.';
-      if (error) {
-        toastr.error(message + ' Error Message: ' + error.message);
+      if (errorResponse.data) {
+        toastr.error(message + ' Error Message: ' + error.data);
       }
       else {
         toastr.error(message);
