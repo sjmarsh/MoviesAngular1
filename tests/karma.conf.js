@@ -10,7 +10,7 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha'],
+    frameworks: ['mocha', 'sinon'],
 
 
     // list of files / patterns to load in the browser
@@ -21,7 +21,8 @@ module.exports = function(config) {
       'https://unpkg.com/angular-toastr/dist/angular-toastr.tpls.js',
       '../node_modules/angular-mocks/angular-mocks.js',
       '../node_modules/chai/chai.js',
-      '../node_modules/sinon/lib/sinon.js',
+      '../node_modules/sinon/lib/sinon/sinon.js',
+      
       '../app/**/*.js',
       '../assets/lib/**/*.js',
       './**/*spec.js'
