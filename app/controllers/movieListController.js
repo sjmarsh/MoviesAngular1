@@ -76,20 +76,20 @@
     if(movieSearchService.hasMorePages()){
       updateGetMoreMovieStatus(true);
       movieService.getMoviesByQuery($scope.searchFilter, $scope.selectedCategories, skip, take)
-        .success(function(movieResponse){
-          var movies = movieResponse.movies;
+        .then(function success(movieResponse){
+          var movies = movieResponse.data.movies;
           for(var i = 0; i < movies.length; i++)
           {
             $scope.movieList.push(movies[i]);
           }
           updateGetMoreMovieStatus(false);
           movieSearchService.incrementPage();
-        })
-        .error(function(error){
+        },
+        function error(errorResponse){
           updateGetMoreMovieStatus(false);
           var message = 'Error getting more movies.';
-          if (error) {
-            toastr.error(message + ' Error: ' + error.message);
+          if (errorResponse.data) {
+            toastr.error(message + ' Error: ' + errorResponse.data);
           }
           else {
             toastr.error(message);
@@ -99,9 +99,8 @@
   };
 
   function initialize() {
-
     populateCategoryList();
-
+   
     if (movieSearchService.getLastSearchFilter()) {
       $scope.searchFilter = movieSearchService.getLastSearchFilter();
     };
@@ -115,13 +114,12 @@
 
   function populateCategoryList() {
     referenceDataService.getCategories()
-      .success(function(categories){
-        $scope.categoryList = categories;
-      })
-      .error(function(error){
+      .then(function success(categoriesResponse){
+        $scope.categoryList = categoriesResponse.data;
+      },function error(errorResponse){
         var message = 'Error loading categories.';
-        if (error) {
-          toastr.error(message + ' Error: ' + error.message);
+        if (errorResponse.data) {
+          toastr.error(message + ' Error: ' + errorResponse.data);
         }
         else {
           toastr.error(message);
@@ -136,16 +134,15 @@
     else {
       updateGetMoreMovieStatus(true);
       movieService.getMovies()
-      .success(function (movieResponse) {
-        $scope.movieList = movieResponse.movies;
-        movieSearchService.storeResults(movieResponse);
+      .then(function success(movieResponse) {
+        $scope.movieList = movieResponse.data.movies;
+        movieSearchService.storeResults(movieResponse.data);
         updateGetMoreMovieStatus(false);
-      })
-      .error(function (error) {
+      }, function error(errorResponse) {
         updateGetMoreMovieStatus(false);
         var message = 'Error loading movies.';
-        if (error) {
-          toastr.error(message + ' Error: ' + error.message);
+        if (errorResponse.data) {
+          toastr.error(message + ' Error: ' + errorResponse.data);
         }
         else {
           toastr.error(message);
@@ -160,16 +157,15 @@
     movieSearchService.resetCurrentPage();
     
     movieService.getMoviesByQuery($scope.searchFilter, $scope.selectedCategories)
-    .success(function (movieResponse) {
-      $scope.movieList = movieResponse.movies;
-      movieSearchService.storeResults(movieResponse);
+    .then(function (movieResponse) {
+      $scope.movieList = movieResponse.data.movies;
+      movieSearchService.storeResults(movieResponse.data);
       updateGetMoreMovieStatus(false);
-    })
-    .error(function (error) {
+    },function error(errorResponse) {
       updateGetMoreMovieStatus(false);
       var message = 'Error loading movies.';
-      if (error) {
-        toastr.error(message + ' Error: ' + error.message);
+      if (errorResponse.data) {
+        toastr.error(message + ' Error: ' + errorResponse.data);
       }
       else {
         toastr.error(message);

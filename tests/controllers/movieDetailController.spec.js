@@ -13,8 +13,7 @@ describe('movieDetailController', function(){
       
       fakeMovieService = {
           getMovie: function(){
-            deferred = q.defer();
-            
+            deferred = q.defer();          
             return deferred.promise;
           }
       };
