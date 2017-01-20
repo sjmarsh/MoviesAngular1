@@ -41,8 +41,8 @@ Explores:
 - <del>Fix android - hide keyboard when 'Enter' pressed for search</del>  
 - <del>Dev vs Prod deployment configuration</del>  
 - <del>Add/Edit gulp to allow for local vs prod builds</del>  
-- <del>Automate deployment to aws</del> (need better parameterisation)  
-- Automated unit tests  
+- <del>Automate deployment to aws</del>  
+- <del>Automated unit tests</del>  
 - Minify html?  
 - Use image urls for each movie as background image (instead of default background)  
 - Create a similar app using Angular 2  
