@@ -12,7 +12,7 @@ Explores:
 - Clone the repo from GitHub  
 - Run npm install  
 - run gulp  
-- Start the app using: npm run app
+- Start the app using: npm start
 
 ## Deployment: ##
 </br>

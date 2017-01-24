@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "http-server .\\dist -o",
     "test": "karma start .\\tests\\karma.conf.js",
     "test-single-run": "karma start .\\tests\\karma.conf.js --single-run",
-    "app": "http-server .\\dist -o",
     "publish": "gulp --production && gulp publish"
   },
   "keywords": [],
